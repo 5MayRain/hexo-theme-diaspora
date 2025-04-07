@@ -1,11 +1,69 @@
+<!-- 帖子视图 -->
+<% var number = 0; %>
+<% if (theme.cover.length > 0){ %>
+    <% var min = Math.ceil(0); %>
+    <% var max = Math.floor(theme.cover.length-1); %>
+    <% var number = Math.floor(Math.random() * (max - min + 1)) + min; %>
+<% } %>
+<% if ( theme.postview == 'cover'){ %>
+    <div class="post_cover" >
+        <% if ( page.cover == '' || page.cover == null ){ %>
+            <img src="<%- theme.cover[number] %>" />
+        <% } else { %>
+            <img src="<%- page.cover %>" />
+        <% } %>
+        <div class="post_cover_mask"></div>
+        <div class="post_text">
+            <h1><%- page.title %></h1>
+            <div>
+                <span><%- page.date.locale("zh-cn").format("MMMM DD, YYYY") %></span>
+
+                <%- partial('_partial/post/tag', {post: page}) %>
+            </div>
+        </div>
+    </div>
+<% } else if( theme.postview == 'all'){ %>
+    <div class="post_cover" >
+        <% if ( page.cover == '' || page.cover == null ){ %>
+            <img src="<%- theme.cover[number] %>" />
+        <% } else { %>
+            <img src="<%- page.cover %>" />
+        <% } %>
+    </div>
+<% } %>
+<!-- END -->
+
 <div class="article">
     <div class='main'>
-        <h1 class="title"><%- page.title %></h1>
-        <div class="stuff">
-            <span><%- page.date.locale("zh-cn").format("MMMM DD, YYYY") %></span>
-            <%- partial('_partial/post/tag', {post: page}) %>
-        </div>
-        <div class="content markdown">
+        <!-- 帖子视图 -->
+        <% if (theme.postview != 'cover'){ %>
+            <h1 class="title"><%- page.title %></h1>
+            <div class="stuff">
+                <span><%- page.date.locale("zh-cn").format("MMMM DD, YYYY") %></span>
+
+                <%- partial('_partial/post/tag', {post: page}) %>
+            </div>
+        <% } %>
+        <!-- END -->
+
+        <!-- 更新时间 -->
+        <% if ( page.updated > page.date ){ %>
+            <% if ( theme.postview == 'cover' ){ %>
+                <div class="updated" style="margin-top: 0px">
+            <% } else { %>
+                <div class="updated" >
+            <% } %>
+                <div></div>
+                <span>该文章更新于 <%- page.updated.locale("zh-cn").format("YYYY.MM.DD") %></span>
+            </div>
+        <% } %>
+        <% if ( page.updated.locale("zh-cn").format("YYYY.MM.DD") == page.date.locale("zh-cn").format("YYYY.MM.DD") && theme.postview != 'all' ){ %>
+            <div class="content markdown" style="margin-top: 0px">
+        <% } else { %>
+            <div class="content markdown">
+        <% } %>
+        <!-- END -->
+
             <%- page.content %>
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="<%- theme.autoplay || page.autoplay || "false" %>">
@@ -23,15 +81,33 @@
                 </ul>
             <%}%>
         </div>
+
+         <!-- 版权声明 -->
         <% if (theme.copyright.enable){ %>
-            <%- partial("_partial/copyright") %>
+            <%- partial("_partial/post/copyright") %>
         <% } %>
+        <!-- END -->
+
+        <!-- 文章结束语 -->
+        <p class="end" >-&nbsp;&nbsp;&nbsp;END&nbsp;&nbsp;&nbsp;-</p>
+        <!-- END -->
+
         <%- partial('gitalk', {post: page}) %>
     </div>
+
+    <!-- 悬浮 -->
     <% if (theme.TOC == true){ %>
-        <div class="side">
-            <%- toc(page.content, {list_number: true}) %>
+    <div class="float">
+        <!-- 目录 -->
+        <div class="directory">
+            <div class="directory_btn float_btn"></div>
+            <div class="directory_list">
+                <%- toc(page.content, {list_number: true}) %>
+            </div>
         </div>
+    </div>
     <%}%>
+    <!-- END -->
+
 </div>
 

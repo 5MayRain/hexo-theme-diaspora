@@ -20,13 +20,17 @@
         <%}%>
 		<a href="#" class="iconfont icon-null"></a>
 	</p>
-	
-    <p id="copyright">
-        &copy; <%= date(new Date(), 'YYYY') %> <%= config.author || config.title %>.
-        <span> | </span>Powered by <%- link_to("https://hexo.io/", "Hexo", {external: true})%>
-        <span> | </span>Theme <%- link_to("https://github.com/Fechin/hexo-theme-diaspora", "Diaspora", {external: true})%> by Fechin
+
+    <p class="copyright">
+		<a><img src="https://img.shields.io/badge/<%= date(new Date(), 'YYYY') %>-<%= config.author || config.title %>-blue?logo=Elastic Cloud&style=flat-square&color=FF4747"></a>
+
+		<a href="https://hexo.io/zh-cn/" target="_blank" title="Hexo"><img src="https://img.shields.io/badge/Frame-Hexo-blue?logo=Hexo&style=flat-square&logoColor=ffffff"></a>
+
+		<a href="https://github.com/5MayRain/hexo-theme-diaspora" target="_blank" title="Diaspora"><img src="https://img.shields.io/badge/Theme-Diaspora-blue?logo=Thumbtack&style=flat-square&logoColor=ffffff&color=FF7102"></a>
+
 		<% if (theme.beian.enable){ %>
-		<span> | </span><a rel="nofollow" href="<%=theme.beian.link%>" target="_blank"><%=theme.beian.beianInfo%></a>
+		<a href="<%=theme.beian.link%>" target="_blank" title="<%=theme.beian.beianInfo%>"><img src="https://img.shields.io/badge/备案-<%=theme.beian.beianInfo%>-blue?logo=coursera&style=flat-square&logoColor=ffffff&color=#6C47FF"></a>
 		<%}%>
-    </p>
+	</p>
+
 </div>

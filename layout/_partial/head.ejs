@@ -47,9 +47,18 @@ var description = '';
     <meta property="og:type" content="object"/>
     <meta property="og:title" content="<%= page_title() %>"/>
     <% if (description) { %><meta property="og:description" content="<%= description %>"/><%}%>
-    <%- css(['css/diaspora.css'])%>
+    <%- css(['css/diaspora.css', 'css/add.css','https://cdn.mrzgh.top/gh/FortAwesome/Font-Awesome@latest/css/all.css'])%>
     <script>window.searchDbPath = "<%= url_for('/search.xml') %>";</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+
+    <!-- 点击效果 -->
+    <% if (theme.fireworks){ %>
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
+    <script type="text/javascript" src="/js/anime.min.js"></script>
+    <script type="text/javascript" src="/js/fireworks.js"></script>
+    <% } %>
+    <!-- END -->
+
 </head>
