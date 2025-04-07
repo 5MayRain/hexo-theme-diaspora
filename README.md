@@ -1,7 +1,6 @@
 # Hexo-theme-diaspora
 
-
-**[在线预览 | PREVIEW ](http://fech.in)**
+**[在线预览 | PREVIEW ](http://blog.mrzgh.top)**
 
 一款基于WP移植的Hexo主题，适合喜欢摄影，影评，乐评和玩弄文字的你，干净，清新； 响应式，Ajax，更多好玩的等你来发现。 
 
@@ -13,7 +12,7 @@
 ### 安装主题
 
 ``` bash
-$ git clone https://github.com/Fechin/hexo-theme-diaspora.git themes/diaspora
+$ git clone https://github.com/5MayRain/hexo-theme-diaspora.git themes/diaspora
 ```
 
 
@@ -135,7 +134,7 @@ menu:
   关于: /about
 
 # 是否显示目录
-TOC: false
+TOC: true
 
 # 是否自动播放音乐
 autoplay: false
@@ -148,7 +147,6 @@ mp3:
 # 首页封面图, 为空时取文章的cover作为封面(注意跨域问题,建议使用同源图片)
 welcome_cover: /img/welcome-cover.jpg
 
-
 # 默认文章封面图（随机调用,支持外链）
 cover: 
   - /img/cover.jpg
@@ -160,38 +158,29 @@ twitterpic:
   src: https://bangdream.moe/img/ident.png
   creatorid: yourtwitteridhere
 
+# 是否使用mathjax
+mathjax: false
+
+
 # 是否关闭默认滚动条
 scrollbar: true
 
 # 本地搜索,请将索引文件放在网站根目录,或修改主题js文件的path值
 local_search:
     # 是否启用
-    enable: false
+    enable: true
 
 # 是否显示 一言(hitokoto)
 hitokoto: true
-
-# 链接(可选:facebook,twitter,github,wechat,email)
-links:
-    facebook: /
-    twitter: /
-    github: /
-    wechat: /img/logo.png
-    email: mailto:xxxx@gmail.com
   
 # 备案
 beian: 
     # 是否显示备案信息
-    enable: true
-    # 是否在主页面最底下显示备案信息(虽然丑，但是完全满足规定要求)
-    enableFooter: false
+    enable: false
     # 备案号
     beianInfo: 冀ICP备xxxxxxx号
     # 链接地址
     link: http://www.beian.miit.gov.cn
-
-# 是否使用mathjax
-mathjax: false
 
 # Gitalk 评论插件（https://github.com/gitalk/gitalk）
 gitalk:
@@ -215,7 +204,7 @@ gitalk:
     distractionFreeMode: false
 
 # 网站关键字
-keywords: Fechin
+keywords: 棕果核,个人博客,Blog
 
 # 要使用google_analytics进行统计的话，这里需要配置ID
 google_analytics: 
@@ -223,13 +212,19 @@ google_analytics:
 # 网站ico
 favicon: /img/favicon.png
 
+# 点击效果
+fireworks: true
+
+# 帖子视图 ( cover、text、all)
+postview: 'cover'
+
 # rss文件
 rss: atom.xml
 
-# 版权信息，要使用版权信息可以在这配置并设定许可方式，可以从 https://creativecommons.org/about/cclicenses/ 查询
+# 版权声明
 copyright:
-    enable: false
-    license: "CC BY-NC-ND"
+    enable: true
+    license: "CC BY"
 
 ```
 
